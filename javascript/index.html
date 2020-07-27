@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Moder JavaScript - Gesu Dev | Documentacion</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Moder JavaScript";
+    var mkdocs_page_input_path = "javascript.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Gesu Dev | Documentacion</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../python/">Python</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../influxdb/">Influxdb</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../prometheus/">Prometheus</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../timescaledb/">TimescaleDB</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Gesu Dev | Documentacion</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Moder JavaScript</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="moder-javascript">Moder JavaScript</h1>
+<h2 id="dom-selector-for-a-single-element">DOM Selector for a Single Element</h2>
+<pre><code class="js">document.getElementById('elementId: DOMString')
+
+// Get things from the element
+document.getElementById('elementId: DOMString').id
+document.getElementById('elementId: DOMString').className
+
+// Change styling
+document.getElementById('elementId: DOMString').style.background = '#3333'
+document.getElementById('elementId: DOMString').style.color = '#3333'
+document.getElementById('elementId: DOMString').style.display = 'none'
+
+// Change content
+document.getElementById('elementId: DOMString').textContent = ''
+document.getElementById('elementId: DOMString').innerText = ''
+document.getElementById('elementId: DOMString').innerHTML = '&lt;span&gt;&lt;/span&gt;'
+
+</code></pre>
+
+<pre><code class="js">document.querySelector('selectors: DOMString')
+
+document.querySelector('li').style.color = 'red';
+document.querySelector('li:last-child').textContent = 'Hello'
+document.querySelector('li:ntn-child(3').style.background = '#ccc';
+document.querySelector('li:ntn-child(odd)').textContent = '#FFF'
+document.querySelector('li:ntn-child(even').textContent = '#000'
+</code></pre>
+
+<h2 id="dom-selectors-for-multiple-elements">DOM Selectors for Multiple elements</h2>
+<pre><code class="js">document.getElementsByClassName('classNames: DOMString')
+
+const items = document.getElementsByClassName('items')
+console.log(items)
+console.log(items[0])
+items[0].style.color = 'red'
+items[0].textContent = 'Hello'
+
+const listItems = document.querySelector('ul').getElementsByClassName('collection')
+
+document.getElementsByTagName('localName: DOMString')
+
+const lis = document.getElementsByTagName('li');
+console.log(lis)
+console.log(lis[0])
+lis[0].style.color = 'red'
+lis[0].textContent = 'Hello'
+
+lis = Array.from(lis)
+
+lis.forEach(function(li, index) {
+    console.log(li.className)
+    li.textContent = `${index}: Hello`;
+});
+
+</code></pre>
+
+<pre><code class="js">document.querySelectorAll('selectors: DOMString') // NodeList
+
+const items = document.querySelectorAll('ul.collection li.collection-item')
+
+items.forEach( function(item, index) {
+    item.textContent = `${index}: Hello`;
+});
+
+const liOdd = document.querySelectorAll('li:nth-child(odd');
+const liEven = document.querySelectorAll('li:nth-child(even');
+
+liOdd.forEach( function(li, index) {
+    li.style.background = '#ccc';
+});
+
+for(let i = 0; i &lt; liEven.length; i++){
+    liEven[i].style.background = '#F4F4F4';
+}
+
+</code></pre>
+
+<pre><code class="js">const list = document.querySelector('ul.collection')
+list.children
+
+val = list.childNodes[0];
+val = list.childNodes[0].nodeName;
+val = list.childNodes[0].nodeType;
+
+// 1 - element
+// 2 - Attribute
+// 3 - Text node
+// 8 - Comment
+// 9 - Document itself
+// 10 - Doctype
+
+
+</code></pre>
+
+<h2 id="creating-elemets">Creating elemets</h2>
+<pre><code class="js">const li = document.createElement('li')
+
+li.className = 'collection-item'
+li.id = 'new-item'
+li.setAttribute('title', 'New Item')
+li.appendChild(document.createTextNode('Hello World'))
+
+const link = document.createElement('a')
+link.className = 'delete item'
+link.innerHTML = '&lt;i class=&quot;fa fa-remove&quot;&gt;&lt;/i&gt;'
+
+li.appendChild(link)
+
+document.querySelector('ul.collecion').appendChild(li)
+
+</code></pre>
+
+<h2 id="event-listeners-event-object">Event listeners &amp; Event object</h2>
+<pre><code class="js">document.querySelector('.clear-tasksk').addEventListener('click', onClick);
+function onClick(e){
+    e.preventDefault()
+
+    val = e
+    // Event target element
+    val = e.target
+    val = e.target.id
+    val = e.target.className
+    val = e.target.classList
+
+    e.target.innerText = 'Hello'
+}
+
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

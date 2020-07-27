@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Influxdb - Gesu Dev | Documentacion</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Influxdb";
+    var mkdocs_page_input_path = "influxdb.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Gesu Dev | Documentacion</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../python/">Python</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Influxdb</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#installing-telegraf-and-influxdb">Installing telegraf and influxdb</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#networking">Networking</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#run-containers">Run containers</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#generate-a-config-file">Generate a config file</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#using-a-custom-telegraf-config-file">Using a custom telegraf config file</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#gettings-started-on-influxdb">Gettings started on influxdb</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#authentication-and-authorization-in-influxdb">Authentication and authorization in InfluxDB</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#database-management-using-influxql">Database management using InfluxQL</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#retention-policy-management">Retention policy management</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#database-laboratorio-ig">DATABASE LABORATORIO IG</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../prometheus/">Prometheus</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../timescaledb/">TimescaleDB</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Gesu Dev | Documentacion</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Influxdb</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="influxdb">InfluxDB</h1>
+<h2 id="installing-telegraf-and-influxdb">Installing telegraf and influxdb</h2>
+<pre><code class="sh">docker pull influxdb:1.7-alpine
+docker pull telegraf:1.11-alpine
+</code></pre>
+
+<h2 id="networking">Networking</h2>
+<pre><code class="sh">docker network create some_network
+docker network create --driver bridge tick-net
+</code></pre>
+
+<h2 id="run-containers">Run containers</h2>
+<pre><code class="sh">docker run -d --name influxdb --net=some_network -v /etc/influxdb/data/:/var/lib/influxdb -p 8083:8083 -p 8086:8086 influxdb:1.7-alpine
+docker run -d --name telegraf --net=container:influxdb telegraf:1.11-alpine
+</code></pre>
+
+<h2 id="generate-a-config-file">Generate a config file</h2>
+<pre><code class="sh">docker run --rm telegraf:1.11-alpine telegraf config &gt; telegraf.conf
+</code></pre>
+
+<h2 id="using-a-custom-telegraf-config-file">Using a custom telegraf config file</h2>
+<pre><code class="sh">docker run -d --name telegraf --net=some_network -v $PWD/telegraf.conf:/etc/telegraf/telegraf.conf:ro telegraf:1.11-alpine
+</code></pre>
+
+<h2 id="gettings-started-on-influxdb">Gettings started on influxdb</h2>
+<pre><code class="sh">docker exec -it influxdb /bin/bash
+bash-4.4# influx -precision rfc3339
+</code></pre>
+
+<pre><code class="sh">docker exec -it influxdb influx -precision rfc3339
+&gt; show databases;
+&gt; use telegraf
+&gt; show series
+&gt; show MEASUREMENTS
+</code></pre>
+
+<h2 id="authentication-and-authorization-in-influxdb">Authentication and authorization in InfluxDB</h2>
+<pre><code class="sh">&gt; CREATE USER admin WITH PASSWORD '&lt;password&gt;' WITH ALL PRIVILEGES
+&gt; SHOW USERS
+&gt; REVOKE ALL PRIVILEGES FROM &quot;user&quot;
+# GRANT READ, WRITE or ALL database privileges to an existing user
+&gt; GRANT [READ,WRITE,ALL] ON &lt;database_name&gt; TO &lt;username&gt;
+# DROP a user
+&gt; DROP USER &lt;username&gt;
+</code></pre>
+
+<h2 id="database-management-using-influxql">Database management using InfluxQL</h2>
+<pre><code class="sh"># &gt; CREATE DATABASE &lt;database_name&gt; [WITH [DURATION &lt;duration&gt;] [REPLICATION &lt;n&gt;] [SHARD DURATION &lt;duration&gt;] [NAME &lt;retention-policy-name&gt;]]
+&gt; CREATE DATABASE &quot;NOAA_water_database&quot; WITH DURATION 3d REPLICATION 1 SHARD DURATION 1h NAME &quot;liquid&quot;
+&gt; CREATE DATABASE &quot;dbname&quot; WITH DURATION 52w1d REPLICATION 1 SHARD DURATION 168h NAME &quot;dbname_rp_1_year&quot;
+&gt; DROP DATABASE &lt;database_name&gt;
+# &gt; DROP SERIES FROM &lt;measurement_name[,measurement_name]&gt; WHERE &lt;tag_key&gt;='&lt;tag_value&gt;'
+&gt; DROP SERIES WHERE &quot;location&quot; = 'santa_monica'
+# &gt; DELETE FROM &lt;measurement_name&gt; WHERE [&lt;tag_key&gt;='&lt;tag_value&gt;'] | [&lt;time interval&gt;]
+&gt; DELETE FROM &quot;h2o_feet&quot;
+</code></pre>
+
+<h2 id="retention-policy-management">Retention policy management</h2>
+<pre><code class="sh">&gt; SHOW RETENTION POLICIES
+&gt; CREATE RETENTION POLICY &lt;retention_policy_name&gt; ON &lt;database_name&gt; DURATION &lt;duration&gt; REPLICATION &lt;n&gt; [SHARD DURATION &lt;duration&gt;] [DEFAULT]
+&gt; CREATE RETENTION POLICY &quot;one_day_only&quot; ON &quot;NOAA_water_database&quot; DURATION 1d REPLICATION 1
+# Modify retention policies with ALTER RETENTION POLICY
+&gt; ALTER RETENTION POLICY &lt;retention_policy_name&gt; ON &lt;database_name&gt; DURATION &lt;duration&gt; REPLICATION &lt;n&gt; SHARD DURATION &lt;duration&gt; DEFAULT
+&gt; CREATE RETENTION POLICY &quot;what_is_time&quot; ON &quot;NOAA_water_database&quot; DURATION 2d REPLICATION 1
+&gt; ALTER RETENTION POLICY &quot;what_is_time&quot; ON &quot;NOAA_water_database&quot; DURATION 3w SHARD DURATION 2h DEFAULT
+# Delete retention policies with DROP RETENTION POLICY
+&gt; DROP RETENTION POLICY &lt;retention_policy_name&gt; ON &lt;database_name&gt;
+&gt; DROP RETENTION POLICY &quot;what_is_time&quot; ON &quot;NOAA_water_database&quot;
+</code></pre>
+
+<h2 id="database-laboratorio-ig">DATABASE LABORATORIO IG</h2>
+<pre><code class="sh">&gt; CREATE DATABASE &quot;noc&quot; WITH DURATION 52w1d REPLICATION 1 SHARD DURATION 168h NAME &quot;noc_1_year&quot;
+&gt; CREATE USER monitoreo WITH PASSWORD 'monitoreo2019.*'
+&gt; CREATE USER dashboard WITH PASSWORD 'dashboard2020.*'
+&gt; GRANT READ ON &quot;noc&quot; TO &quot;dashboard&quot;
+&gt; GRANT WRITE ON &quot;noc&quot; TO &quot;monitoreo&quot;
+&gt; SHOW USERS
+&gt; SHOW GRANTS FOR &lt;user_name&gt;
+
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../prometheus/" class="btn btn-neutral float-right" title="Prometheus">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../python/" class="btn btn-neutral" title="Python"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../python/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../prometheus/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

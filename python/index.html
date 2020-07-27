@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Python - Gesu Dev | Documentacion</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Python";
+    var mkdocs_page_input_path = "python.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Gesu Dev | Documentacion</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Python</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#tips-chips">Tips &amp; Chips</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#web">Web</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#django">Django</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#flask">Flask</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#gui">GUI</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#pyside2">PySide2</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#kivy">Kivy</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#databases">Databases</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#async-tasks">Async Tasks</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#huey">Huey</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#celery">Celery</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#with-flask">With Flask</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cientifico-y-numerico">Científico y Númerico</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#videos">Videos</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#analisis-de-datos">Análisis de Datos</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#machine-learnig">Machine Learnig</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#deteccion-facial">Detección Facial</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#reconocimiento-de-voz">Reconocimiento de Voz</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#procesamiento-de-imagenes">Procesamiento de Imágenes</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#librerias">Librerias</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#video">Video</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#procesamiento-de-video">Procesamiento de Vídeo</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../influxdb/">Influxdb</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../prometheus/">Prometheus</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../timescaledb/">TimescaleDB</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Gesu Dev | Documentacion</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Python</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="python">Python</h1>
+<h2 id="tips-chips">Tips &amp; Chips</h2>
+<p>Run a function at the start of every round 5 minute interval</p>
+<pre><code class="python">from datetime import datetime, timedelta
+from threading import Timer
+
+def get_sleep_time():
+    now = datetime.now()
+    next_run = now.replace(minute=int(now.minute / 5) * 5, second=0, microsecond=0) + timedelta(minutes=5)
+    return (next_run - now).total_seconds()
+
+def dowork():
+    now = datetime.now()
+    print('Doing some work at', now)
+    schedule_next_run()
+
+def schedule_next_run():
+    sleep_time = get_sleep_time()
+    print(f'sleeping for {sleep_time} seconds')
+    t = Timer(sleep_time, dowork)
+    t.daemon = True
+    t.start()
+
+print('Starting work schedule')
+schedule_next_run()
+input('Doing work every 5 minutes. Press enter to exit')
+</code></pre>
+
+<ul>
+<li><a href="https://realpython.com/intro-to-pyenv/">Managing Multiple Python Versions With Pyenv</a></li>
+<li><a href="https://wiki.python.org/moin/PythonSpeed/PerformanceTips">Performance Tips</a></li>
+<li><a href="https://fangpenlin.com/posts/2012/08/26/good-logging-practice-in-python/">Good logging practice in Python</a></li>
+<li><a href="https://www.techbeamers.com/essential-python-tips-tricks-programmers/?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more">30 Essential Python Tips and Tricks for Programmers</a></li>
+<li><a href="https://sahandsaba.com/thirty-python-language-features-and-tricks-you-may-not-know.html">30 Python Language Features and Tricks You May Not Know About</a></li>
+<li><a href="https://opensource.com/article/18/11/python-libraries-data-science">9 obscure Python libraries for data science</a></li>
+<li><a href="https://realpython.com/python-concurrency/">Speed Up Your Python Program With Concurrency</a></li>
+<li><a href="https://sharats.me/posts/the-ever-useful-and-neat-subprocess-module/">The ever useful and neat subprocess module</a></li>
+<li><a href="https://pythonspeed.com/docker/">Production-ready Docker packaging</a></li>
+<li><a href="https://skipperkongen.dk/2016/09/09/easy-parallel-http-requests-with-python-and-asyncio/">Easy parallel HTTP requests with Python and asyncio</a></li>
+<li><a href="https://ip-api.com/">IP Geolocation API</a></li>
+<li><a href="https://realpython.com/intermediate-python-project-ideas/">13 Project Ideas for Intermediate Python Developers</a></li>
+<li><a href="https://towardsdatascience.com/a-simple-approach-to-templated-sql-queries-in-python-adc4f0dc511">A Simple Approach To Templated SQL Queries In Python</a></li>
+<li><a href="https://github.com/the-javapocalypse/Twitter-Sentiment-Analysis">Twitter Sentiment Analysis</a></li>
+<li><a href="https://github.com/vprusso/youtube_tutorials/tree/master/twitter_python">Twitter Python</a></li>
+<li><a href="https://testdriven.io/blog/fastapi-crud/">Developing and Testing an Asynchronous API with FastAPI and Pytest</a></li>
+<li><a href="https://github.com/mherrmann/fbs-tutorial">fbs tutorial</a></li>
+<li><a href="https://stackoverflow.com/questions/13210737/get-only-new-emails-imaplib-and-python">Get only NEW Emails imaplib and python</a></li>
+</ul>
+<h2 id="web">Web</h2>
+<h3 id="django">Django</h3>
+<ul>
+<li><a href="https://www.valentinog.com/blog/drf/">Django REST with React</a></li>
+<li><a href="https://github.com/app-generator/django-dashboard-coreui">Django Dashboard CoreUI</a></li>
+</ul>
+<h3 id="flask">Flask</h3>
+<ul>
+<li><a href="https://github.com/app-generator/flask-dashboard-coreui">Flask Dashboard - CoreUI Design</a></li>
+</ul>
+<h2 id="gui">GUI</h2>
+<h3 id="pyside2">PySide2</h3>
+<ul>
+<li><a href="https://doc.qt.io/qtforpython/contents.html">Qt for Python Documentation</a></li>
+<li><a href="https://doc.qt.io/qtforpython/tutorials/index.html">Qt for Python Tutorials</a></li>
+<li><a href="https://github.com/PySide/pyside2-examples">PySide2 examples</a></li>
+<li><a href="https://pyqtgraph.readthedocs.io/en/latest/index.html">Pyqtgraph</a></li>
+<li><a href="http://blog.rcnelson.com/building-a-matplotlib-gui-with-qt-designer-part-1/">Building a Matplotlib GUI with Qt Designer</a></li>
+<li><a href="http://projects.skylogic.ca/blog/how-to-install-pyqt5-and-build-your-first-gui-in-python-3-4/">How to Install PyQt5 and Build Your First GUI in Python 3.4</a></li>
+</ul>
+<h3 id="kivy">Kivy</h3>
+<p>Kivy VideoPlayer not working: Error loading Texture #6672</p>
+<pre><code class="sh">pip install pillow ffpyplayer
+</code></pre>
+
+<ul>
+<li><a href="https://medium.com/edureka/kivy-tutorial-9a0f02fe53f5">How To Make Simple Mobile Applications Using Kivy In Python?</a></li>
+<li><a href="https://github.com/Gust4voSales/Netclone_Netflix-UI-Clone">Netclone Netflix UI Clone</a></li>
+<li><a href="https://github.com/kivy/kivy/issues/4242">Audio and Video Streaming issue on Android</a></li>
+</ul>
+<h2 id="databases">Databases</h2>
+<ul>
+<li><a href="https://gist.github.com/noahcrowley/941e87422cd6fc43b0e9e8f0d0877836/#file-write_test-py">Writing Data to InfluxDB with Python</a></li>
+<li><a href="https://the-fonz.gitlab.io/posts/postgres-notify/">Playing with Postgres NOTIFY/LISTEN using Python asyncio and psycopg2</a></li>
+<li><a href="https://hakibenita.com/fast-load-data-python-postgresql">Fastest Way to Load Data Into PostgreSQL Using Python</a></li>
+</ul>
+<h2 id="async-tasks">Async Tasks</h2>
+<h3 id="huey">Huey</h3>
+<ul>
+<li><a href="https://nanvel.name/2013/08/huey-celery-alteranive">Huey - a nice celery alternative</a></li>
+</ul>
+<h3 id="celery">Celery</h3>
+<h4 id="with-flask">With Flask</h4>
+<pre><code class="python">from flask import Flask
+from celery import Celery
+
+app = Flask(__name__)
+app.config['CELERY_BROKER_URL'] = 'redis://localhost:6379'
+app.config['CELERY_RESULT_BACKEND'] = 'redis://localhost:6379'
+
+celery = Celery(app.name, broker=app.config['CELERY_BROKER_URL'])
+celery.conf.update(app.config)
+
+
+@celery.task()
+def some_task():
+    # ...
+    return {&quot;result&quot;: &quot;success&quot;}
+
+
+@app.route('/some-route')
+def encoder():
+    task = some_task.delay()
+    # ...
+    return {&quot;task_id&quot;: task.id}
+
+
+if __name__ == &quot;__main__&quot;:
+    app.run(debug=True)
+</code></pre>
+
+<ul>
+<li><a href="http://masnun.com/2014/08/02/django-celery-easy-async-task-processing.html">Django &amp; Celery – Easy async task processing</a></li>
+<li><a href="https://www.codementor.io/@uditagarwal/asynchronous-tasks-using-celery-with-django-du1087f5k">Asynchronous Tasks using Celery with Django</a></li>
+<li><a href="http://michal.karzynski.pl/blog/2014/05/18/setting-up-an-asynchronous-task-queue-for-django-using-celery-redis/">Setting up an asynchronous task queue for Django using Celery and Redis</a></li>
+<li><a href="https://realpython.com/asynchronous-tasks-with-django-and-celery/">Asynchronous Tasks With Django and Celery</a></li>
+<li><a href="https://www.caktusgroup.com/blog/2016/10/18/dont-keep-important-data-your-celery-queue/">Don't keep important data in your Celery queue</a></li>
+<li><a href="https://thomassileo.name/blog/2012/08/20/how-to-keep-celery-running-with-supervisor/">How to keep Celery running with supervisor</a></li>
+<li><a href="https://stackoverflow.com/questions/15199919/storing-a-task-id-for-each-celery-task-in-database">Storing a task id for each celery task in database</a></li>
+<li><a href="https://stackoverflow.com/questions/45611122/celery-exception-handling">Celery Exception Handling</a></li>
+<li><a href="https://techarena51.com/blog/running-asynchronous-background-tasks-linux-python-3-flask-celery/">Running Asynchronous background Tasks on Linux with Python 3 Flask and Celery</a></li>
+</ul>
+<h2 id="cientifico-y-numerico">Científico y Númerico</h2>
+<ul>
+<li><a href="http://www-personal.umich.edu/~mejn/computational-physics/">Computational Physics with Python</a></li>
+<li><a href="https://nbviewer.jupyter.org/github/gfrubi/clases-python-cientifico/blob/master/Lecture-4-Matplotlib.ipynb">Matplotlib - gráficos 2D y 3D en Python</a></li>
+<li><a href="https://www.dataquest.io/blog/numpy-tutorial-python/?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more#creating-a-numpy-array">NumPy Tutorial: Data Analysis with Python</a></li>
+<li><a href="https://www.labri.fr/perso/nrougier/python-opengl/">Python &amp; OpenGL for Scientific Visualization</a></li>
+</ul>
+<h3 id="videos">Videos</h3>
+<ul>
+<li><a href="https://www.youtube.com/playlist?list=PLGBbVX_WvN7as_DnOGcpkSsUyXB1G_wqb">Python para cietíficos e ingenieros</a></li>
+</ul>
+<h2 id="analisis-de-datos">Análisis de Datos</h2>
+<ul>
+<li><a href="https://youtu.be/w26x-z-BdWQ">Data analysis in Python with pandas</a></li>
+<li><a href="http://guidetodatamining.com/">The Ancient Art of the Numerati</a></li>
+<li><a href="http://www.gregreda.com/2013/10/26/intro-to-pandas-data-structures/">Intro to pandas data structures</a></li>
+<li><a href="https://www.dataquest.io/blog/matplotlib-tutorial/">Analyzing Tweets with Pandas and Matplotlib</a></li>
+<li><a href="https://github.com/pawl/awesome-etl#python">awesome-etl</a></li>
+<li><a href="https://www.swegler.com/becky/blog/2014/08/06/useful-pandas-snippets/">Useful Pandas Snippets</a></li>
+<li><a href="https://www.springboard.com/blog/data-mining-python-tutorial/?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more">Data Mining in Python</a></li>
+<li><a href="https://deanla.com/dont_reinvent_pandas.html?fbclid=IwAR0a-yTfgbwYRkNwMkmmitSovbSQWzzxtrvkA0JTkysR5986doqlw9O05iM">Diving into Pandas is Faster than Reinventing it</a></li>
+<li><a href="https://realpython.com/pyspark-intro/">First Steps With PySpark and Big Data Processing</a></li>
+<li><a href="http://cubes.databrewery.org/documentation.html">Cubes</a></li>
+</ul>
+<h2 id="machine-learnig">Machine Learnig</h2>
+<ul>
+<li><a href="https://github.com/gmonce/scikit-learn-book">Learning scikit-learn</a></li>
+</ul>
+<h3 id="deteccion-facial">Detección Facial</h3>
+<ul>
+<li><a href="https://github.com/ageitgey/face_recognition">face_recognition</a></li>
+<li><a href="https://github.com/ragulin/face-recognition-server">face-recognition-server</a></li>
+<li><a href="https://realpython.com/face-detection-in-python-using-a-webcam/">Face Detection in Python Using a Webcam</a></li>
+<li><a href="http://hanzratech.in/2015/02/03/face-recognition-using-opencv.html">Face Recognition using Python and OpenCV</a></li>
+<li><a href="https://www.superdatascience.com/blogs/opencv-face-recognition">Face recognition using OpenCV and Python: A beginner's guide</a></li>
+<li><a href="https://thecodacus.com/2017/02/21/face-recognition-loading-recognizer/">Face Recognition Using OpenCV | Loading Recognizer</a></li>
+<li><a href="https://medium.com/@madhawavidanapathirana/real-time-human-detection-in-computer-vision-part-2-c7eda27115c6">Real-time Human Detection in Computer Vision</a></li>
+<li><a href="https://www.pyimagesearch.com/2015/11/09/pedestrian-detection-opencv/">Pedestrian Detection OpenCV</a></li>
+<li><a href="https://www.datacamp.com/community/tutorials/face-detection-python-opencv">Face Detection with Python using OpenCV</a></li>
+<li><a href="https://www.bogotobogo.com/python/OpenCV_Python/python_opencv3_Image_Object_Detection_Face_Detection_Haar_Cascade_Classifiers.php">Object Detection: Face Detection using Haar Cascade Classfiers</a></li>
+<li><a href="https://www.pyimagesearch.com/2015/05/11/creating-a-face-detection-api-with-python-and-opencv-in-just-5-minutes/">Creating a face detection API with Python and OpenCV</a></li>
+</ul>
+<h3 id="reconocimiento-de-voz">Reconocimiento de Voz</h3>
+<ul>
+<li><a href="https://realpython.com/python-speech-recognition/">The Ultimate Guide To Speech Recognition With Python</a></li>
+<li><a href="http://blog.justsophie.com/python-speech-to-text-with-pocketsphinx/">Python speech to text with PocketSphinx</a></li>
+<li><a href="https://www.analyticsvidhya.com/blog/2019/07/learn-build-first-speech-to-text-model-python/">Learn how to Build your own Speech-to-Text Model</a></li>
+<li><a href="https://github.com/watson-developer-cloud/python-sdk">Watson Developer Cloud Python SDK</a></li>
+<li><a href="https://github.com/abhishek305/PyQt5-Text-To-Speech-GUI-Based/blob/master/texttospeech.py">PyQt5 Text To Speech GUI Based</a></li>
+<li><a href="https://blog.eonidi.com/index.php/2018/01/24/reconocimiento-de-voz-tiempo-real-en-idioma-espanol-con-pocketsphinx/">Reconocimiento de voz (tiempo real) en idioma español con PocketSphinx</a></li>
+</ul>
+<h2 id="procesamiento-de-imagenes">Procesamiento de Imágenes</h2>
+<ul>
+<li><a href="https://codewords.recurse.com/issues/six/image-processing-101">Image Processing 101</a></li>
+<li><a href="https://nanonets.com/blog/ocr-financial-documents/">How to use deep learning for data extraction from financial document</a></li>
+<li><a href="https://nanonets.com/blog/ocr-with-tesseract/">A comprehensive guide to OCR with Tesseract, OpenCV and Python</a></li>
+<li><a href="https://www.pyimagesearch.com/2017/06/19/image-difference-with-opencv-and-python/">Image Difference with OpenCV and Python</a></li>
+<li><a href="https://dzone.com/articles/image-data-analysis-using-numpy-amp-opencv">Basic Image Data Analysis Using Python: Part 1</a></li>
+<li><a href="https://dzone.com/articles/basic-image-data-analysis-using-python-part-2">Basic Image Data Analysis Using Python: Part 2</a></li>
+<li><a href="https://www.pyimagesearch.com/2015/11/30/detecting-machine-readable-zones-in-passport-images/">Detecting machine-readable zones in passport images</a></li>
+<li><a href="https://towardsdatascience.com/mask-r-cnn-for-ship-detection-segmentation-a1108b5a083">Mask R-CNN for Ship Detection &amp; Segmentation</a></li>
+<li><a href="https://www.kite.com/blog/python/image-segmentation-tutorial/">Image Segmentation with Python</a></li>
+<li><a href="https://www.learnopencv.com/barcode-and-qr-code-scanner-using-zbar-and-opencv/">Barcode and QR code Scanner using ZBar and OpenCV</a></li>
+<li><a href="https://www.learnopencv.com/image-alignment-feature-based-using-opencv-c-python/">Image Alignment (Feature Based) using OpenCV (C++/Python)</a></li>
+<li><a href="https://medium.com/cashify-engineering/improve-accuracy-of-ocr-using-image-preprocessing-8df29ec3a033">Improve Accuracy of OCR using Image Preprocessing</a></li>
+<li><a href="https://www.analyticsvidhya.com/blog/2018/10/a-step-by-step-introduction-to-the-basic-object-detection-algorithms-part-1/">A Step-by-Step Introduction to the Basic Object Detection Algorithms</a></li>
+<li><a href="https://www.analyticsvidhya.com/blog/2019/07/computer-vision-implementing-mask-r-cnn-image-segmentation/">Computer Vision Tutorial: Implementing Mask R-CNN for Image Segmentation</a></li>
+<li><a href="http://www.sixthresearcher.com/counting-blue-and-white-bacteria-colonies-with-python-and-opencv/">Counting blue and white bacteria colonies with Python and OpenCV</a></li>
+<li><a href="https://www.pyimagesearch.com/2017/07/10/using-tesseract-ocr-python/">Using Tesseract OCR with Python</a></li>
+<li><a href="https://medium.com/analytics-vidhya/cnncaptchasolver-5625b189a14f">Extract Captcha Text using CNN in Python</a></li>
+</ul>
+<h3 id="librerias">Librerias</h3>
+<ul>
+<li><a href="http://imageai.org/">ImageAI</a></li>
+<li><a href="https://github.com/JohannesBuchner/imagehash">Imagehash</a></li>
+<li><a href="https://github.com/lengstrom/fast-style-transfer">fast-style-transfer</a></li>
+<li><a href="https://github.com/anishathalye/neural-style">neural-style</a></li>
+<li><a href="https://github.com/madmaze/pytesseract">Python Tesseract</a></li>
+</ul>
+<h3 id="video">Video</h3>
+<ul>
+<li><a href="https://youtu.be/5e9jhgiqbzc">Image Processing for Python</a></li>
+</ul>
+<h2 id="procesamiento-de-video">Procesamiento de Vídeo</h2>
+<p>Extracting and Saving Video Frames</p>
+<pre><code class="python">import cv2
+vidcap = cv2.VideoCapture('big_buck_bunny_720p_5mb.mp4')
+success, image = vidcap.read()
+count = 0
+while success:
+    cv2.imwrite(&quot;frame%d.jpg&quot; % count, image) # save frame as JPEG file
+    success,image = vidcap.read()
+    print('Read a new frame: ', success)
+    count += 1
+</code></pre>
+
+<p>Start video read from a particular frame</p>
+<pre><code class="python">f = # put here the frame from which you want to start
+self.capture.set(CV_CAP_PROP_POS_FRAMES, f)
+while f &lt; self.frame_count:
+    retval, image = self.capture.read()
+    f += 1
+</code></pre>
+
+<ul>
+<li><a href="https://www.edureka.co/blog/tensorflow-object-detection-tutorial/#tutorial-1">Object Detection Tutorial in TensorFlow: Real-Time Object Detection</a></li>
+<li><a href="https://www.arunponnusamy.com/yolo-object-detection-opencv-python.html">YOLO Object Detection with OpenCV and Python</a></li>
+<li><a href="https://medium.com/@iKhushPatel/convert-video-to-images-images-to-video-using-opencv-python-db27a128a481">Convert Video to Images (Frames) &amp; Images (Frames) to Video using OpenCV (Python)</a></li>
+<li><a href="https://www.life2coding.com/convert-image-frames-video-file-using-opencv-python/">Convert Image Frames to Video File using OpenCV in Python</a></li>
+<li><a href="https://github.com/Breakthrough/PySceneDetect">PySceneDetect</a></li>
+<li><a href="https://github.com/escaped/django-video-encoding">Django Video Encoding</a></li>
+<li><a href="https://www.botreetechnologies.com/blog/video-audio-transmuxing-into-hls-using-ffmpeg-hls-muxer-in-django">Video, Audio Transmuxing into HLS using FFmpeg HLS Muxer in Django</a></li>
+<li><a href="https://video.aminyazdanpanah.com/python/start?r=hls">What is the Python FFmpeg Video Streaming?</a></li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../influxdb/" class="btn btn-neutral float-right" title="Influxdb">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+        <span style="margin-left: 15px"><a href="../influxdb/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

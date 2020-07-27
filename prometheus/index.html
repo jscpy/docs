@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Prometheus - Gesu Dev | Documentacion</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Prometheus";
+    var mkdocs_page_input_path = "prometheus.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Gesu Dev | Documentacion</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../python/">Python</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../influxdb/">Influxdb</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Prometheus</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#prometheus">Prometheus</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#configuracion-basica">Configuración Básica</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configuracion-avanzada">Configuración Avanzada</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#file-based-service-discovery">File-Based Service Discovery</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#consul-service-discovery">Consul Service Discovery</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#snmp-exporter">SNMP Exporter</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#blackbox-exporter">Blackbox Exporter</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#consul">Consul</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#alert-manager">Alert Manager</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#federation">Federation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#python-client">Python Client</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../timescaledb/">TimescaleDB</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Gesu Dev | Documentacion</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Prometheus</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="prometheus-snippets">Prometheus snippets</h1>
+<h2 id="prometheus">Prometheus</h2>
+<p><a href="https://prometheus.io/"><img alt="N|Solid" src="https://avatars1.githubusercontent.com/u/3380462?s=200&amp;v=4" /></a></p>
+<p><strong>Power your metrics and alerting with a leading open-source monitoring solution.</strong></p>
+<h3 id="configuracion-basica">Configuración Básica</h3>
+<p>Prometheus es un archivo binario y no necesita dependecias externas. La configuración se realiza creando un archivo YAML nombrado <code>prometheus.yml</code>.</p>
+<pre><code class="sh">./prometheus --config.file=prometheus.yml --web.listen-address=&quot;0.0.0.0:9090&quot;
+</code></pre>
+
+<pre><code class="yaml"># my global config
+global:
+  scrape_interval:     15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+  # scrape_timeout is set to the global default (10s).
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+      # - alertmanager:9093
+
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+rule_files:
+  # - &quot;first_rules.yml&quot;
+  # - &quot;second_rules.yml&quot;
+
+# A scrape configuration containing exactly one endpoint to scrape:
+# Here it's Prometheus itself.
+scrape_configs:
+  # The job name is added as a label `job=&lt;job_name&gt;` to any timeseries scraped from this config.
+  - job_name: 'prometheus'
+
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+
+    static_configs:
+    - targets: ['localhost:9090']
+</code></pre>
+
+<h3 id="configuracion-avanzada">Configuración Avanzada</h3>
+<h4 id="file-based-service-discovery">File-Based Service Discovery</h4>
+<p>La configuración de Prometheus cambia dependiedo de los <a href="https://prometheus.io/docs/instrumenting/exporters">exporters</a> utilizados. Si queremos definir de manera dinámica los <em>targets</em> que serán monitoreados podemos hacerlo usando un JSON. Dentro de este archivo estara la lista de <em>hosts</em> junto con las etiquetas que serviran para identifcarlos y agruparlos.</p>
+<pre><code class="json">[
+  {
+    &quot;targets&quot;: [ &quot;4.4.4.4&quot; ],
+    &quot;labels&quot;: {
+      &quot;check&quot;: &quot;icmp&quot;,
+      &quot;service&quot;: &quot;servicio-001&quot;
+    }
+  },
+  {
+    &quot;targets&quot;: [ &quot;127.0.0.1&quot;],
+    &quot;labels&quot;: {
+      &quot;check&quot;: &quot;snmp&quot;,
+      &quot;service&quot;: &quot;servicio-002&quot;
+    }
+  }
+]
+</code></pre>
+
+<p>Asumiendo que estamos utilizando <code>blackbox_exporter</code> y <code>snmp_exporter</code>, la configuración recomendada seria la siguiente:</p>
+<pre><code class="yaml">global:
+  scrape_interval: 1m
+
+scrape_configs:
+  - job_name: 'blackbox'
+    metrics_path: /probe
+    params:
+      module: [icmp_ipv4]
+    file_sd_configs:
+      - files:
+        - 'targets.json'
+    relabel_configs:
+      - source_labels: [&quot;check&quot;]
+        regex: (icmp|all)
+        action: keep
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: 127.0.0.1:9115  # This is your blackbox exporter.
+    metric_relabel_configs:
+      - source_labels: [__name__]
+        regex: go_(.*)
+        action: drop
+      - source_labels: [__name__]
+        regex: pushgateway_(.*)
+        action: drop
+      - source_labels: [__name__]
+        regex: promhttp_(.*)
+        action: drop
+      - source_labels: [__name__]
+        regex: process_(.*)
+        action: drop
+
+  - job_name: 'snmp'
+    file_sd_configs:
+      - files:
+        - 'targets.json'
+    metrics_path: /snmp
+    params:
+      module: [if_mib]
+    relabel_configs:
+      - source_labels: [&quot;check&quot;]
+        regex: (snmp|all)
+        action: keep
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: 127.0.0.1:9116  # The SNMP exporter's real hostname:port.
+    metric_relabel_configs:
+      - source_labels: [__name__]
+        regex: go_(.*)
+        action: drop
+      - source_labels: [__name__]
+        regex: pushgateway_(.*)
+        action: drop
+      - source_labels: [__name__]
+        regex: promhttp_(.*)
+        action: drop
+      - source_labels: [__name__]
+        regex: process_(.*)
+        action: drop
+
+remote_write:
+  - url: &quot;http://remote-server-ip:9201/write&quot;
+
+remote_read:
+  - url: &quot;http://remote-server-ip:9201/read&quot;
+</code></pre>
+
+<p>Esta configuración nos ofrece la siguientes ventajas:</p>
+<ul>
+<li>Podemos separa los <em>targets</em> por tipo de <em>checks</em> que queramos realizar ( <strong>ICMP</strong> y <strong>SNMP</strong> en este caso).</li>
+<li>Si queremos agregar un nuevo <em>target</em>, basta con agregarlo como un nuevo objecto al archivo JSON.</li>
+<li>En <code>metric_relabel_configs</code>, usando expresiones regulares filtramos las metricas que no necesitamos y no seran guardadas en la base de datos.</li>
+</ul>
+<h4 id="consul-service-discovery">Consul Service Discovery</h4>
+<p><a href="##Consul">Clic aquí</a> para ver más detalles de Consul.</p>
+<p>La integración con Prometheus se realiza con los siguientes cambios en el archivo <code>prometheus.yml</code></p>
+<pre><code class="yaml">global:
+  scrape_interval: 1m
+
+scrape_configs:
+  - job_name: 'blackbox'
+    metrics_path: /probe
+    params:
+      module: [icmp_ipv4]
+    consul_sd_configs:
+      - server: 'localhost:8500'
+    relabel_configs:
+    - source_labels: [__meta_consul_service]
+      target_label: service
+    - source_labels: ['__address__']
+      target_label: '__param_target'
+      regex: '([^:]+)(:.*)?'
+      replacement: '$1'
+    - source_labels: [__meta_consul_service_metadata_check]
+      regex: (icmp|all)
+      action: keep
+    - source_labels: [__param_target]
+      target_label: instance
+    - target_label: __address__
+      replacement: 127.0.0.1:9115
+
+  - job_name: 'snmp'
+    metrics_path: /snmp
+    params:
+      module: [if_mib]
+    consul_sd_configs:
+      - server: '127.0.0.1:8500'
+    relabel_configs:
+      - source_labels: [__meta_consul_service]
+        target_label: service
+      - source_labels: ['__address__']
+        target_label: '__param_target'
+        regex: '([^:]+)(:.*)?'
+        replacement: '$1'
+      - source_labels: [__meta_consul_service_metadata_check]
+        regex: (snmp|all)
+        action: keep
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: 127.0.0.1:9116
+</code></pre>
+
+<p>En <code>relabel_configs</code> añadimos una nueva fuente de información que serán los servicios definidos en el API Rest de Consul y que por cada nuevo <em>label</em> podemos leer cada uno de ellos desde Prometheus añadiendo un nuevo <code>source_labels</code> por cada etiqueta.</p>
+<pre><code class="yaml">  - source_labels: [__meta_consul_service_metadata_label]
+    regex: (regex)
+    action: keep | drop
+</code></pre>
+
+<h2 id="snmp-exporter">SNMP Exporter</h2>
+<p><em><a href="https://github.com/prometheus/snmp_exporter">SNMP exporter</a> exposes information gathered from SNMP ( by port <code>:9116</code>) for use by the Prometheus monitoring system.</em></p>
+<pre><code class="sh">./snmp_exporter
+</code></pre>
+
+<p>SNMP exporter lee la definición de MIBS generados en el archivo <code>snmp.yml</code>. Si el protocolo tiene una comunidad definida, podemos agregarlo dentro de <code>auth</code> de la siguiente forma.</p>
+<pre><code class="yaml">if_mib:
+  version: 2
+  auth:
+    community: 1nteligl0b3
+  walk:
+  - 1.3.6.1.2.1.2
+  - 1.3.6.1.2.1.31.1.1
+  get:
+  - 1.3.6.1.2.1.1.3.0
+  metrics:
+  - name: sysUpTime
+    oid: 1.3.6.1.2.1.1.3
+    type: gauge
+    help: The time (in hundredths of a second) since the network management portion
+      of the system was last re-initialized. - 1.3.6.1.2.1.1.3
+  - name: ifNumber
+    oid: 1.3.6.1.2.1.2.1
+    type: gauge
+    help: The number of network interfaces (regardless of their current state) present
+      on this system. - 1.3.6.1.2.1.2.1
+  - name: ifIndex
+    oid: 1.3.6.1.2.1.2.2.1.1
+    type: gauge
+    help: A unique value, greater than zero, for each interface - 1.3.6.1.2.1.2.2.1.1
+    indexes:
+    - labelname: ifIndex
+      type: gauge
+  - name: ifDescr
+</code></pre>
+
+<h2 id="blackbox-exporter">Blackbox Exporter</h2>
+<p><em>The <a href="https://github.com/prometheus/blackbox_exporter">blackbox exporter</a> allows blackbox probing of endpoints over HTTP, HTTPS, DNS, TCP and ICMP. Exposes information by port <code>:9115</code></em></p>
+<pre><code class="sh">./blackbox_exporter
+</code></pre>
+
+<p>La definición de los modulos de Blackbox se hacen en el archivo <code>blackbox.yml</code></p>
+<pre><code class="yaml">modules:
+  icmp_ipv4:
+    prober: icmp
+    icmp:
+      preferred_ip_protocol: ip4
+</code></pre>
+
+<h2 id="consul">Consul</h2>
+<p><a href="https://www.consul.io/">Consul</a> proporciona un plano de control completo con funciones de descubrimiento, configuración y segmentación de servicios. Podeos definir la configuración (<code>config.json</code>) de Consul dentro de un direcotrio <strong>config.d</strong> y definirlo de la siguiente manera.</p>
+<pre><code class="json">{
+    &quot;client_addr&quot;: &quot;0.0.0.0&quot;,
+    &quot;datacenter&quot;: &quot;&quot;,
+    &quot;node_name&quot;: &quot;&quot;,
+    &quot;data_dir&quot;: &quot;/tmp/consul&quot;,
+    &quot;encrypt&quot;: &quot;[consul_keygen]&quot;,
+    &quot;log_level&quot;: &quot;INFO&quot;
+}
+
+</code></pre>
+
+<pre><code class="sh">./consul keygen
+</code></pre>
+
+<pre><code class="sh">./consul agent -dev -config-dir=config.d
+</code></pre>
+
+<h2 id="alert-manager">Alert Manager</h2>
+<p><em>Alerting with Prometheus is separated into two parts:</em></p>
+<ul>
+<li><em>Alerting rules in Prometheus servers send alerts to an Alertmanager.</em></li>
+<li><em>The Alertmanager then manages those alerts, including silencing, inhibition, aggregation and sending out notifications via methods such as email, on-call notification systems, and chat platforms.</em></li>
+</ul>
+<pre><code class="sh">./alertmanager --config.file=alertmanager.yml
+</code></pre>
+
+<p>Toda la configuración de <a href="https://prometheus.io/docs/alerting/overview">Alert manager</a> se define en el archivo <code>alertmanager.yml</code></p>
+<pre><code class="yaml">global:
+  resolve_timeout: 5m
+  smtp_smarthost: 'smtp.inteliglobe.com:587'
+  smtp_from: 'jesolis@inteliglobe.com'
+  smtp_auth_username: 'jesolis'
+  smtp_auth_password: '123456789a@@'
+  smtp_require_tls: false
+
+route:
+  group_by: ['alertname']
+  group_wait: 1m
+  group_interval: 1m
+  repeat_interval: 1h
+  receiver: 'email-to-soporte'
+receivers:
+- name: 'email-to-soporte'
+  email_configs:
+  - to: 'jsc.py.14@gmail.com'
+inhibit_rules:
+  - source_match:
+      severity: 'critical'
+    target_match:
+      severity: 'warning'
+    equal: ['alertname', 'dev', 'instance']
+
+</code></pre>
+
+<p>En Prometheus la configuración en <code>prometheus.yml</code> debe contener lo siguiente:</p>
+<pre><code class="yaml">global:
+  scrape_interval: 1m
+
+rule_files:
+  - &quot;alert.rules.yml&quot;
+
+# ...
+
+alerting:
+  alertmanagers:
+  - scheme: http
+    static_configs:
+    - targets:
+      - &quot;alertmanager:9093&quot;
+</code></pre>
+
+<p><code>alert.rules.yml</code> nos permite definir las reglas de alerta</p>
+<p>Regla para determinar si el disco llego a 80%</p>
+<pre><code class="yaml">groups:
+- name: aws-filesystem
+  rules:
+  - alert: aws_file_system_full
+    expr: 100-((node_filesystem_free_bytes{mountpoint=&quot;/home&quot;}/node_filesystem_size_bytes{mountpoint=&quot;/home&quot;})*100) &gt; 20
+    for: 5m
+    annotations:
+      summary: &quot;La instancia de amazon no tiene espacio en disco&quot;
+      description: &quot;La instancia de amazon no tiene espacio en disco&quot;
+</code></pre>
+
+<p>Reglas para definir si un <em>host</em> o servicio esta fuera de línea.</p>
+<pre><code class="yaml">  - alert: InstanceDown
+    expr: instance:probe_success == 0
+    for: 5m
+    annotations:
+      summary: &quot;Instance {{ $labels.instance }} down&quot;
+      description: &quot;{{ $labels.instance }} has been down for more than 5 minutes.&quot;
+  - alert: ServiceDown
+    expr: instance:ifOperStatus == 2
+    for: 5m
+    annotations:
+      summary: &quot;Service of {{ $labels.instance }} down&quot;
+      description: &quot;Service {{ $labels.instance }} has been down for more than 5 minutes.&quot;
+</code></pre>
+
+<h2 id="federation">Federation</h2>
+<p><em>Federation allows a Prometheus server to scrape selected time series from another Prometheus server. There are different use cases for federation. Commonly, it is used to either achieve scalable Prometheus monitoring setups or to pull related metrics from one service's Prometheus into another.</em></p>
+<pre><code class="yaml"># slave prometheus.yml file
+global:
+  external_labels:
+    slave: slave-name-or-another-tag
+</code></pre>
+
+<pre><code class="yaml"># master prometheus.yml file
+scrape_configs:
+  - job_name: 'federate'
+    scrape_interval: 1m
+    honor_labels: true
+    metrics_path: '/federate'
+    params:
+      'match[]':
+        # - '{__name__=~&quot;job:.*&quot;}'
+        - '{job=&quot;blackbox&quot;}'
+        - '{job=&quot;snmp&quot;}'
+    static_configs:
+      - targets:
+         - 'prometheus_01:9090'
+         - 'prometheus_02:9100'
+         - 'prometheus_03:9110'
+         # ...
+</code></pre>
+
+<h2 id="python-client">Python Client</h2>
+<p><em>The official Python 2 and 3 client for Prometheus.</em></p>
+<pre><code class="sh">pip install prometheus_client
+</code></pre>
+
+<p><em>See more in <a href="https://github.com/prometheus/client_python">Python client</a> github repository.</em></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../timescaledb/" class="btn btn-neutral float-right" title="TimescaleDB">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../influxdb/" class="btn btn-neutral" title="Influxdb"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../influxdb/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../timescaledb/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
